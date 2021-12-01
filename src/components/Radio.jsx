@@ -1,30 +1,20 @@
 import { useState } from 'react';
 
 const Radio = () => {
-  const [radio, setRadio] = useState('Berlin');
+  const [radio, setRadio] = useState({ city: '' });
 
+  const handleChange = (e) => {
+    setRadio({ ...radio, city: e.target.value });
+  };
   return (
-    <div>
-      <input
-        type='radio'
-        value='Berlin'
-        checked={radio === 'Berlin'}
-        onChange={(e) => setRadio(e.target.value)}
-      />
-      <input
-        type='radio'
-        value='London'
-        checked={radio === 'London'}
-        onChange={(e) => setRadio(e.target.value)}
-      />
-      <input
-        type='radio'
-        value='Madrid'
-        checked={radio === 'Madrid'}
-        onChange={(e) => setRadio(e.target.value)}
-      />
+    <div onChange={handleChange}>
+      <input type='radio' value='Berlin' name='city' />
+      Berlin
+      <input type='radio' value='London' name='city' />
+      London
+      <input type='radio' value='Madrid' name='city' />
+      Madrid
     </div>
   );
 };
-
 export default Radio;
